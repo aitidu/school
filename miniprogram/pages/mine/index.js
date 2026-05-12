@@ -1,4 +1,40 @@
+const app = getApp();
+
 Page({
-  data: {},
-  onLoad() {}
+  data: {
+    user: null
+  },
+
+  onLoad() {
+    this.loadUser();
+  },
+
+  onShow() {
+    if (app.globalData.userInfo) {
+      this.setData({ user: app.globalData.userInfo });
+    }
+  },
+
+  loadUser() {
+    const user = app.globalData.userInfo;
+    if (user) {
+      this.setData({ user });
+    } else {
+      app.userReadyCallback = (user) => {
+        this.setData({ user });
+      };
+    }
+  },
+
+  goToMyRepairs() {
+    wx.navigateTo({ url: '/pages/repair/list' });
+  },
+
+  goToAuth() {
+    wx.navigateTo({ url: '/pages/mine/realnameAuth' });
+  },
+
+  goToEditProfile() {
+    wx.navigateTo({ url: '/pages/mine/editProfile' });
+  }
 });

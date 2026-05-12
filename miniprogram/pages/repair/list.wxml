@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="empty" wx:if="{{!loading && repairs.length === 0}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无报修记录</text>
+    <navigator url="/pages/repair/index" open-type="switchTab" class="empty-link">去报修</navigator>
+  </view>
+
+  <view
+    wx:for="{{repairs}}"
+    wx:key="_id"
+    class="card repair-item"
+    data-id="{{item._id}}"
+    bindtap="goToDetail"
+  >
+    <view class="repair-header">
+      <text class="repair-type">{{item.type}}</text>
+      <text class="repair-status status-{{item.status}}">{{item.statusText}}</text>
+    </view>
+    <text class="repair-desc">{{item.description}}</text>
+    <text class="repair-time">{{item.createTimeStr}}</text>
+  </view>
+</view>

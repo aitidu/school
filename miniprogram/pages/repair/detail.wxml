@@ -1,0 +1,80 @@
+<view class="container" wx:if="{{repair}}">
+  <view class="card">
+    <view class="detail-header">
+      <text class="detail-type">{{repair.type}}</text>
+      <text class="status-tag status-{{repair.status}}">{{repair.statusText}}</text>
+    </view>
+    <view class="detail-desc">{{repair.description}}</view>
+
+    <view class="detail-images" wx:if="{{repair.images && repair.images.length > 0}}">
+      <image
+        wx:for="{{repair.images}}"
+        wx:key="*this"
+        src="{{item}}"
+        mode="aspectFill"
+        class="detail-image"
+        bindtap="onPreviewImage"
+        data-url="{{item}}"
+      />
+    </view>
+
+    <view class="detail-meta">
+      <text class="detail-time">提交时间：{{repair.createTimeStr}}</text>
+      <text class="detail-worker" wx:if="{{repair.worker}}">维修人员：{{repair.worker}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions" wx:if="{{repair.status !== 'archived' && !showEvaluation}}">
+    <button
+      wx:if="{{repair.status === 'pending' || repair.status === 'assigned' || repair.status === 'in_progress'}}"
+      class="action-btn secondary"
+      bindtap="onUrge"
+    >催单</button>
+
+    <button
+      wx:if="{{repair.status === 'completed'}}"
+      class="action-btn primary"
+      bindtap="showEval"
+    >确认完成并评价</button>
+  </view>
+
+  <!-- 评价表单 -->
+  <view class="card eval-form" wx:if="{{showEvaluation}}">
+    <view class="section-title">请评价本次维修</view>
+    <view class="stars">
+      <text
+        wx:for="{{[1,2,3,4,5]}}"
+        wx:key="*this"
+        class="star {{index < rating ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onRate"
+      >★</text>
+    </view>
+    <textarea
+      class="comment-input"
+      placeholder="说说维修服务怎么样…"
+      value="{{comment}}"
+      bindinput="onCommentInput"
+      maxlength="200"
+    />
+    <view class="eval-btns">
+      <button class="eval-btn cancel" bindtap="cancelEval">取消</button>
+      <button class="eval-btn confirm" bindtap="submitEvaluation" loading="{{submitting}}">提交评价</button>
+    </view>
+  </view>
+
+  <!-- 已评价结果 -->
+  <view class="card eval-result" wx:if="{{repair.status === 'archived' && repair.evaluation.rating}}">
+    <view class="section-title">我的评价</view>
+    <view class="stars readonly">
+      <text
+        wx:for="{{[1,2,3,4,5]}}"
+        wx:key="*this"
+        class="star {{index < repair.evaluation.rating ? 'active' : ''}}"
+      >★</text>
+    </view>
+    <text class="eval-comment" wx:if="{{repair.evaluation.comment}}">{{repair.evaluation.comment}}</text>
+    <text class="eval-comment empty" wx:else>未填写评价内容</text>
+  </view>
+</view>

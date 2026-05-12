@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="card auth-tip">
+    <text class="tip-title">实名认证说明</text>
+    <text class="tip-desc">根据学校管理规定，使用宿舍报修系统需完成实名认证。请如实填写以下信息，提交后由管理员审核。</text>
+  </view>
+
+  <view class="card form-card">
+    <view class="form-item">
+      <text class="form-label">姓名</text>
+      <input class="form-input" placeholder="请输入真实姓名" value="{{realName}}" data-field="realName" bindinput="onInput" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">学号</text>
+      <input class="form-input" placeholder="请输入学号" value="{{studentId}}" data-field="studentId" bindinput="onInput" />
+    </view>
+  </view>
+
+  <button class="submit-btn" type="primary" bindtap="submit">提交认证</button>
+</view>

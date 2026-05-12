@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/repair/index",
-    "pages/mine/index"
+    "pages/mine/index",
+    "pages/mine/editProfile",
+    "pages/mine/realnameAuth",
+    "pages/repair/list",
+    "pages/repair/detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1AAD19",

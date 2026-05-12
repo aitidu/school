@@ -1,5 +1,47 @@
 <view class="container">
   <view class="card">
-    <text>报修页面 — 待开发</text>
+    <view class="section-title">报修类型</view>
+    <view class="type-list">
+      <view
+        wx:for="{{types}}"
+        wx:key="*this"
+        class="type-item {{typeIndex === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onSelectType"
+      >{{item}}</view>
+    </view>
   </view>
+
+  <view class="card">
+    <view class="section-title">问题描述</view>
+    <textarea
+      class="desc-input"
+      placeholder="请详细描述您遇到的问题…"
+      value="{{description}}"
+      bindinput="onInput"
+      maxlength="500"
+      auto-height
+    />
+    <view class="char-count">{{description.length}}/500</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">上传图片（选填）</view>
+    <view class="image-list">
+      <view
+        wx:for="{{images}}"
+        wx:key="*this"
+        class="image-item"
+      >
+        <image src="{{item}}" mode="aspectFill" class="image-preview" />
+        <view class="image-remove" bindtap="onRemoveImage" data-index="{{index}}">×</view>
+      </view>
+      <view class="image-add" bindtap="onChooseImage" wx:if="{{images.length < 9}}">
+        <text class="add-icon">+</text>
+        <text class="add-text">添加图片</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">提交报修</button>
 </view>
