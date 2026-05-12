@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="card form-card">
+    <view class="form-item">
+      <text class="form-label">预计归寝时间</text>
+      <picker mode="time" value="{{expectedTime}}" bindchange="onTimeChange">
+        <view class="picker-val {{expectedTime ? '' : 'placeholder'}}">
+          {{expectedTime || '请选择时间'}}
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">晚归原因</text>
+      <textarea
+        class="textarea"
+        placeholder="请详细说明晚归原因…"
+        maxlength="200"
+        value="{{reason}}"
+        bindinput="onReasonInput"
+      />
+      <text class="char-count">{{reason.length}}/200</text>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="submit" loading="{{submitting}}" disabled="{{submitting}}">提交报备</button>
+</view>

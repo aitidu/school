@@ -49,6 +49,21 @@
       <text class="action-text">我的报修</text>
       <text class="action-arrow">></text>
     </view>
+    <view class="card action-item" bindtap="goToLateReport">
+      <text class="action-icon">&#xe64d;</text>
+      <text class="action-text">晚归报备</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToLeaveRequest">
+      <text class="action-icon">&#xe646;</text>
+      <text class="action-text">请假申请</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToMyAttendance">
+      <text class="action-icon">&#xe649;</text>
+      <text class="action-text">归寝记录</text>
+      <text class="action-arrow">></text>
+    </view>
     <view class="card action-item" bindtap="goToRepairManage" wx:if="{{user.role === 'manager'}}">
       <text class="action-icon">&#xe60f;</text>
       <text class="action-text">报修管理</text>

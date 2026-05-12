@@ -38,6 +38,18 @@ Page({
     wx.navigateTo({ url: '/pages/mine/realnameAuth' });
   },
 
+  goToLateReport() {
+    wx.navigateTo({ url: '/pages/attendance/lateReport' });
+  },
+
+  goToLeaveRequest() {
+    wx.navigateTo({ url: '/pages/attendance/leaveRequest' });
+  },
+
+  goToMyAttendance() {
+    wx.navigateTo({ url: '/pages/attendance/myRecord' });
+  },
+
   goToEditProfile() {
     wx.navigateTo({ url: '/pages/mine/editProfile' });
   }

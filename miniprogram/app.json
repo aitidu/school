@@ -8,7 +8,10 @@
     "pages/repair/list",
     "pages/repair/detail",
     "pages/manager/repairManage/list",
-    "pages/manager/repairManage/detail"
+    "pages/manager/repairManage/detail",
+    "pages/attendance/lateReport",
+    "pages/attendance/leaveRequest",
+    "pages/attendance/myRecord"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1AAD19",

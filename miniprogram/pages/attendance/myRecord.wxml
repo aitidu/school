@@ -1,0 +1,23 @@
+<view class="container">
+  <block wx:if="{{records.length > 0}}">
+    <view class="card record-item" wx:for="{{records}}" wx:key="_id">
+      <view class="record-header">
+        <text class="type-badge type-{{item.type}}">{{item.typeText}}</text>
+        <text class="record-time">{{item.checkTimeStr}}</text>
+      </view>
+      <view class="record-body" wx:if="{{item.address}}">
+        <text class="record-label">地点：</text>
+        <text class="record-value">{{item.address}}</text>
+      </view>
+      <view class="record-body" wx:if="{{item.remark}}">
+        <text class="record-label">备注：</text>
+        <text class="record-value">{{item.remark}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:elif="{{!loading}}">
+    <text class="empty-icon">&#xe649;</text>
+    <text class="empty-text">暂无归寝记录</text>
+  </view>
+</view>

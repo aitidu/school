@@ -1,0 +1,67 @@
+.record-item {
+  padding: 24rpx;
+  margin-bottom: 2rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.type-badge {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 6rpx;
+  color: #fff;
+}
+
+.type-badge.type-normal {
+  background-color: #4caf50;
+}
+
+.type-badge.type-late {
+  background-color: #ff9800;
+}
+
+.type-badge.type-unreturned {
+  background-color: #f44336;
+}
+
+.record-time {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.record-body {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.record-label {
+  color: #888;
+}
+
+.record-value {
+  color: #333;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  color: #ddd;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

@@ -1,0 +1,53 @@
+.form-card {
+  padding: 16rpx 24rpx;
+}
+
+.form-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+  margin-bottom: 16rpx;
+}
+
+.picker-val {
+  font-size: 30rpx;
+  color: #333;
+  padding: 16rpx 0;
+}
+
+.picker-val.placeholder {
+  color: #ccc;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #bbb;
+  margin-top: 8rpx;
+}
+
+.submit-btn {
+  margin: 48rpx 24rpx;
+  background-color: #1AAD19;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+}

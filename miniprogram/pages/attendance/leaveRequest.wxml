@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="card form-card">
+    <view class="section-title">开始时间</view>
+    <view class="form-item">
+      <text class="form-label">日期</text>
+      <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
+        <view class="picker-val {{startDate ? '' : 'placeholder'}}">
+          {{startDate || '请选择日期'}}
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">时间</text>
+      <picker mode="time" value="{{startTime}}" bindchange="onStartTimeChange">
+        <view class="picker-val {{startTime ? '' : 'placeholder'}}">
+          {{startTime || '请选择时间'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="card form-card" style="margin-top:24rpx;">
+    <view class="section-title">结束时间</view>
+    <view class="form-item">
+      <text class="form-label">日期</text>
+      <picker mode="date" value="{{endDate}}" bindchange="onEndDateChange">
+        <view class="picker-val {{endDate ? '' : 'placeholder'}}">
+          {{endDate || '请选择日期'}}
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">时间</text>
+      <picker mode="time" value="{{endTime}}" bindchange="onEndTimeChange">
+        <view class="picker-val {{endTime ? '' : 'placeholder'}}">
+          {{endTime || '请选择时间'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="card form-card" style="margin-top:24rpx;">
+    <view class="form-item">
+      <text class="form-label">请假原因</text>
+      <textarea
+        class="textarea"
+        placeholder="请详细说明请假原因…"
+        maxlength="200"
+        value="{{reason}}"
+        bindinput="onReasonInput"
+      />
+      <text class="char-count">{{reason.length}}/200</text>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="submit" loading="{{submitting}}" disabled="{{submitting}}">提交申请</button>
+</view>
