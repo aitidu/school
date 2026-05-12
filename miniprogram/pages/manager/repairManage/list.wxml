@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="tabs">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="key"
+      class="tab-item {{activeTab === item.key ? 'active' : ''}}"
+      data-tab="{{item.key}}"
+      bindtap="onTabChange"
+    >{{item.label}}</view>
+  </view>
+
+  <view class="list-wrap">
+    <view class="empty" wx:if="{{!loading && repairs.length === 0}}">
+      <text class="empty-text">暂无数据</text>
+    </view>
+
+    <view
+      wx:for="{{repairs}}"
+      wx:key="_id"
+      class="card repair-item"
+      data-id="{{item._id}}"
+      bindtap="goToDetail"
+    >
+      <view class="repair-header">
+        <text class="repair-type">{{item.type}}</text>
+        <text class="repair-status status-{{item.status}}">{{item.statusText}}</text>
+      </view>
+      <text class="repair-desc">{{item.description}}</text>
+      <view class="repair-footer">
+        <text class="repair-time">{{item.createTimeStr}}</text>
+        <text class="repair-worker" wx:if="{{item.worker}}">{{item.worker}}</text>
+      </view>
+    </view>
+  </view>
+</view>

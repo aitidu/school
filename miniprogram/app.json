@@ -6,7 +6,9 @@
     "pages/mine/editProfile",
     "pages/mine/realnameAuth",
     "pages/repair/list",
-    "pages/repair/detail"
+    "pages/repair/detail",
+    "pages/manager/repairManage/list",
+    "pages/manager/repairManage/detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1AAD19",

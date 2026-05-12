@@ -30,6 +30,10 @@ Page({
     wx.navigateTo({ url: '/pages/repair/list' });
   },
 
+  goToRepairManage() {
+    wx.navigateTo({ url: '/pages/manager/repairManage/list' });
+  },
+
   goToAuth() {
     wx.navigateTo({ url: '/pages/mine/realnameAuth' });
   },

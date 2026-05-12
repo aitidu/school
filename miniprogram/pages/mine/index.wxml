@@ -49,6 +49,11 @@
       <text class="action-text">我的报修</text>
       <text class="action-arrow">></text>
     </view>
+    <view class="card action-item" bindtap="goToRepairManage" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe60f;</text>
+      <text class="action-text">报修管理</text>
+      <text class="action-arrow">></text>
+    </view>
     <view class="card action-item" bindtap="goToAuth" wx:if="{{!user.isAuth}}">
       <text class="action-icon">&#xe642;</text>
       <text class="action-text">实名认证</text>

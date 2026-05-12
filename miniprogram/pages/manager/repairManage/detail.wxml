@@ -1,0 +1,85 @@
+<view class="container" wx:if="{{repair}}">
+  <!-- 工单信息 -->
+  <view class="card">
+    <view class="detail-header">
+      <text class="detail-type">{{repair.type}}</text>
+      <text class="status-tag status-{{repair.status}}">{{repair.statusText}}</text>
+    </view>
+    <view class="detail-desc">{{repair.description}}</view>
+
+    <view class="detail-images" wx:if="{{repair.images && repair.images.length > 0}}">
+      <image
+        wx:for="{{repair.images}}"
+        wx:key="*this"
+        src="{{item}}"
+        mode="aspectFill"
+        class="detail-image"
+        bindtap="onPreviewImage"
+        data-url="{{item}}"
+      />
+    </view>
+
+    <view class="detail-meta">
+      <text class="detail-time">提交时间：{{repair.createTimeStr}}</text>
+      <text class="detail-worker" wx:if="{{repair.worker}}">维修人员：{{repair.worker}}</text>
+      <text class="detail-time" wx:if="{{repair.completedTimeStr}}">完成时间：{{repair.completedTimeStr}}</text>
+    </view>
+  </view>
+
+  <!-- 评价信息 -->
+  <view class="card" wx:if="{{repair.evaluation && repair.evaluation.rating}}">
+    <view class="section-title">学生评价</view>
+    <view class="stars readonly">
+      <text
+        wx:for="{{[1,2,3,4,5]}}"
+        wx:key="*this"
+        class="star {{index < repair.evaluation.rating ? 'active' : ''}}"
+      >★</text>
+    </view>
+    <text class="eval-comment" wx:if="{{repair.evaluation.comment}}">{{repair.evaluation.comment}}</text>
+    <text class="eval-comment empty" wx:else>未填写评价内容</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <block wx:if="{{repair.status === 'pending'}}">
+      <button class="action-btn primary" bindtap="onAccept" loading="{{submitting}}">接单</button>
+      <button class="action-btn secondary" bindtap="showAssignDialog">派单</button>
+    </block>
+    <button
+      wx:if="{{repair.status === 'assigned'}}"
+      class="action-btn primary"
+      bindtap="onStartRepair"
+      loading="{{submitting}}"
+    >开始处理</button>
+    <button
+      wx:if="{{repair.status === 'in_progress'}}"
+      class="action-btn primary"
+      bindtap="onComplete"
+      loading="{{submitting}}"
+    >标记完成</button>
+    <button
+      wx:if="{{repair.status === 'completed' && repair.evaluation && repair.evaluation.rating}}"
+      class="action-btn secondary"
+      bindtap="onArchive"
+      loading="{{submitting}}"
+    >归档</button>
+  </view>
+
+  <!-- 派单弹窗 -->
+  <view class="mask" wx:if="{{showAssign}}" bindtap="cancelAssign"></view>
+  <view class="assign-dialog" wx:if="{{showAssign}}">
+    <view class="dialog-title">派单</view>
+    <input
+      class="worker-input"
+      placeholder="请输入维修人员姓名"
+      value="{{workerName}}"
+      bindinput="onWorkerNameInput"
+      focus="{{showAssign}}"
+    />
+    <view class="dialog-btns">
+      <button class="dialog-btn cancel" bindtap="cancelAssign">取消</button>
+      <button class="dialog-btn confirm" bindtap="onAssign" loading="{{submitting}}">确定</button>
+    </view>
+  </view>
+</view>
