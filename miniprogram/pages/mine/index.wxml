@@ -69,6 +69,36 @@
       <text class="action-text">报修管理</text>
       <text class="action-arrow">></text>
     </view>
+    <view class="card action-item" bindtap="goToCheckIn" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe649;</text>
+      <text class="action-text">归寝登记</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToAttendanceRecords" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe625;</text>
+      <text class="action-text">归寝记录管理</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToLeaveReview" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe646;</text>
+      <text class="action-text">请假审核</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToLateReportReview" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe64d;</text>
+      <text class="action-text">晚归报备审核</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToAbnormal" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe602;</text>
+      <text class="action-text">异常预警</text>
+      <text class="action-arrow">></text>
+    </view>
+    <view class="card action-item" bindtap="goToStudentManage" wx:if="{{user.role === 'manager'}}">
+      <text class="action-icon">&#xe63a;</text>
+      <text class="action-text">学生管理</text>
+      <text class="action-arrow">></text>
+    </view>
     <view class="card action-item" bindtap="goToAuth" wx:if="{{!user.isAuth}}">
       <text class="action-icon">&#xe642;</text>
       <text class="action-text">实名认证</text>

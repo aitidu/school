@@ -11,7 +11,15 @@
     "pages/manager/repairManage/detail",
     "pages/attendance/lateReport",
     "pages/attendance/leaveRequest",
-    "pages/attendance/myRecord"
+    "pages/attendance/myRecord",
+    "pages/manager/attendance/checkIn",
+    "pages/manager/attendance/records",
+    "pages/manager/attendance/leaveReview",
+    "pages/manager/attendance/lateReportReview",
+    "pages/manager/attendance/abnormal",
+    "pages/manager/student/list",
+    "pages/manager/student/edit",
+    "pages/manager/student/import"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1AAD19",

@@ -50,6 +50,30 @@ Page({
     wx.navigateTo({ url: '/pages/attendance/myRecord' });
   },
 
+  goToCheckIn() {
+    wx.navigateTo({ url: '/pages/manager/attendance/checkIn' });
+  },
+
+  goToAttendanceRecords() {
+    wx.navigateTo({ url: '/pages/manager/attendance/records' });
+  },
+
+  goToLeaveReview() {
+    wx.navigateTo({ url: '/pages/manager/attendance/leaveReview' });
+  },
+
+  goToLateReportReview() {
+    wx.navigateTo({ url: '/pages/manager/attendance/lateReportReview' });
+  },
+
+  goToAbnormal() {
+    wx.navigateTo({ url: '/pages/manager/attendance/abnormal' });
+  },
+
+  goToStudentManage() {
+    wx.navigateTo({ url: '/pages/manager/student/list' });
+  },
+
   goToEditProfile() {
     wx.navigateTo({ url: '/pages/mine/editProfile' });
   }

@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="guide-card">
+    <text class="guide-title">批量导入说明</text>
+    <text class="guide-text">请准备CSV格式文件，表头必须包含：</text>
+    <text class="guide-cols">姓名,学号,手机,宿舍楼栋</text>
+    <text class="guide-text">每行一条学生数据，已存在的学号将自动更新</text>
+  </view>
+
+  <view class="upload-section">
+    <view class="file-picker" bindtap="chooseFile">
+      <text class="picker-icon">+</text>
+      <text class="picker-text">选择CSV文件</text>
+    </view>
+    <view class="file-info" wx:if="{{file}}">
+      <text class="file-name">{{file.name}}</text>
+      <text class="file-size">{{file.size}} bytes</text>
+    </view>
+  </view>
+
+  <view class="action-wrap">
+    <button
+      class="import-btn"
+      bindtap="uploadAndImport"
+      loading="{{uploading || importing}}"
+      disabled="{{!file || uploading || importing}}"
+    >
+      {{uploading ? '上传文件中…' : (importing ? '导入中…' : '开始导入')}}
+    </button>
+  </view>
+
+  <view class="result-card" wx:if="{{result}}">
+    <view class="result-header">
+      <text class="result-title">导入结果</text>
+    </view>
+    <view class="result-row">
+      <text class="result-label">总计</text>
+      <text class="result-value">{{result.total}} 条</text>
+    </view>
+    <view class="result-row success">
+      <text class="result-label">成功</text>
+      <text class="result-value">{{result.success}} 条</text>
+    </view>
+    <view class="result-row fail" wx:if="{{result.fail > 0}}">
+      <text class="result-label">失败</text>
+      <text class="result-value">{{result.fail}} 条</text>
+    </view>
+    <view class="error-list" wx:if="{{result.errors.length > 0}}">
+      <text class="error-title">错误详情：</text>
+      <view wx:for="{{result.errors}}" wx:key="*this" class="error-item">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

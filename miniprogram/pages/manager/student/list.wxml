@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="search-bar">
+    <input
+      class="search-input"
+      placeholder="搜索姓名、学号、楼栋"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearch"
+      confirm-type="search"
+    />
+    <button class="search-btn" bindtap="onSearch" size="mini">搜索</button>
+  </view>
+
+  <view class="toolbar">
+    <button class="tool-btn primary" bindtap="goToEdit" size="mini">新增学生</button>
+    <button class="tool-btn" bindtap="goToImport" size="mini">批量导入</button>
+  </view>
+
+  <view class="list-wrap">
+    <view class="empty" wx:if="{{!loading && students.length === 0}}">
+      <text class="empty-text">暂无学生数据</text>
+    </view>
+
+    <view
+      wx:for="{{students}}"
+      wx:key="_id"
+      class="card student-item"
+      data-id="{{item._id}}"
+      bindtap="goToEdit"
+    >
+      <view class="student-header">
+        <text class="student-name">{{item.realName || '未填写'}}</text>
+        <text class="student-id">{{item.studentId || '无学号'}}</text>
+      </view>
+      <view class="student-body">
+        <text class="student-phone">{{item.phone || '无手机号'}}</text>
+        <text class="student-dorm">{{item.dormitory || '未分配宿舍'}}</text>
+      </view>
+      <view class="student-footer">
+        <text class="student-auth" wx:if="{{item.isAuth}}">已认证</text>
+        <text class="student-auth no" wx:else>未认证</text>
+      </view>
+    </view>
+
+    <view class="loading-more" wx:if="{{loading}}">
+      <text>加载中…</text>
+    </view>
+    <view class="no-more" wx:if="{{!hasMore && students.length > 0}}">
+      <text>已加载全部</text>
+    </view>
+  </view>
+</view>
